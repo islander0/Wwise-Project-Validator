@@ -42,7 +42,7 @@ Each path is wrapped in double quotes and separated by commas. The Main Bus chec
 2. Run the script:
 
 ```
-python project_validator.py
+python waapi-project-validator.py
 ```
 
 3. Open `validator_report.csv`, which is created next to the script.
@@ -67,10 +67,16 @@ Example:
 
 ```
 rule,severity,name,type,path,id,fix
-empty-event,Error,Play_Door,Event,\Events\Default Work Unit\Play_Door,{00000000-0000-0000-0000-000000000000},"Add an Action to the Event, or delete it if it is unused."
+empty-event,Error,emptyEvent,Event,\Events\Default Work Unit\emptyEvent,{0AFDFC59-D7DA-47B5-ABFE-B1E5FBBD15DB},"Add an Action to the Event, or delete it if it is unused."
 ```
 
 Filter on the `rule` column in Excel or any spreadsheet tool to work through one type of problem at a time.
+
+## Limitations
+
+Objects that inherit their positioning from a parent are not resolved to the parent's effective settings.
+The name and bus checks only scan the containers listed in CONTAINERS. The empty Event check scans the whole project.
+Only empty-event is an Error. To make another rule fail the exit code, change its severity in the matching check function.
 
 ## Exit code
 
