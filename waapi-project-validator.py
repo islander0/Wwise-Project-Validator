@@ -97,7 +97,12 @@ with WaapiClient() as client:
 script_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(script_dir, "validator_report.csv")
 
-writeCsv(findings, csv_path)
+try:
+    writeCsv(findings, csv_path)
+except PermissionError:
+    print(f"Error: cannot write {csv_path}. Close it if it is open in Excel, then run again.")
+    sys.exit(2)
+
 print(f"{len(findings)} findings written to {csv_path}")
 
 # Count errors (warnings don't count)
@@ -107,7 +112,7 @@ for finding in findings:
         errors += 1
 
 print(f"{len(findings)} findings, {errors} errors.")
-print(f"CSV:  {csv_path}")
+print(f"CSV: {csv_path}")
 
 if errors > 0:
     sys.exit(1)
