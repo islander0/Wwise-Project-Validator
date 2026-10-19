@@ -13,25 +13,15 @@ A small Python tool that connects to a running Wwise project through WAAPI and c
 
 ## Requirements
 
-- Wwise (version tested: 2025.1.10.9233)
+- Wwise (version tested: 2025.1.11.9262)
 - WAAPI enabled in Wwise (Project > User Preferences > Enable Wwise Authoring API). The tool connects to the default address, `ws://127.0.0.1:8080/waapi`
-- Python 3.13 (the version it was developed and tested on)
+- Python 3.15 (the version it was developed and tested on)
 - The `waapi-client` package
 
 Install the dependency:
 
 ```
 pip install -r requirements.txt
-```
-
-## Configuration
-
-At the top of the script, edit the `CONTAINERS` constant to list the work units or folders of your project that should be scanned for the name and bus checks:
-
-
-For example:
-```python
-CONTAINERS = r'"\Containers\Default Work Unit", "\Containers\SFX"'
 ```
 
 Each path is wrapped in double quotes and separated by commas. The Main Bus check compares against `"Bus:Main Bus"`, so if your project uses a different default bus name, change it in `checkMainBus`.
@@ -87,5 +77,6 @@ The script exits with code `1` when at least one finding has the severity `Error
 ```
 project_validator.py   the validator
 requirements.txt       Python dependency
+containers.json        Container list
 .gitignore             excludes generated reports
 ```
