@@ -1,0 +1,7 @@
+# Generated reports
+validator_report.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
