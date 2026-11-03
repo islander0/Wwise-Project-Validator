@@ -13,9 +13,10 @@ A small Python tool that connects to a running Wwise project through WAAPI and c
 
 ## Requirements
 
-- Wwise (version tested: 2025.1.11.9262)
+- Wwise 2025.1+ (version tested: 2025.1.12.9287)
+  **Due to changes in top-level hierarchy names after Wwise 2025.1, the validator will break on older versions. An additional option is planned**
 - WAAPI enabled in Wwise (Project > User Preferences > Enable Wwise Authoring API). The tool connects to the default address, `ws://127.0.0.1:8080/waapi`
-- Python 3.15 (the version it was developed and tested on)
+- Python 3.17 (the version it was developed and tested on)
 - The `waapi-client` package
 
 Install the dependency:
